@@ -4,7 +4,6 @@ import './App.css';
 import { useState } from 'react'
 import { useEffect } from 'react';
 import Country from '../src/component/Country/Country'
-import Cart from '../src/component/Cart/Cart'
 function App() {
   const [countries, setCountries] = useState([]);
   useEffect(() => {
@@ -16,6 +15,7 @@ function App() {
 
   const [cart, setCart] = useState([]);
   const handleAddCountry = (country) => {
+    console.log('added', country);
     const newCart = [...cart, country];
     setCart(newCart)
   }
@@ -23,8 +23,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h4>Country added {cart.length}</h4>
-        <Cart cart = {cart}></Cart>
+<h4>Country added {cart.length}</h4>
         <ul>
           {
             countries.map(country => <Country country={country} key={country.alpha3Code} handleAddCountry={handleAddCountry}></Country>)

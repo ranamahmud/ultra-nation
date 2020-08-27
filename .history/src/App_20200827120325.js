@@ -3,8 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react'
 import { useEffect } from 'react';
-import Country from '../src/component/Country/Country'
-import Cart from '../src/component/Cart/Cart'
 function App() {
   const [countries, setCountries] = useState([]);
   useEffect(() => {
@@ -13,21 +11,15 @@ function App() {
       .then(data => setCountries(data))
       .catch(error => console.log(error))
   }, [])
-
-  const [cart, setCart] = useState([]);
-  const handleAddCountry = (country) => {
-    const newCart = [...cart, country];
-    setCart(newCart)
-  }
-
   return (
     <div className="App">
       <header className="App-header">
-        <h4>Country added {cart.length}</h4>
-        <Cart cart = {cart}></Cart>
+
         <ul>
           {
-            countries.map(country => <Country country={country} key={country.alpha3Code} handleAddCountry={handleAddCountry}></Country>)
+            countries.map(country => <li>
+              {country.name}
+            </li>)
           }
         </ul>
         <img src={logo} className="App-logo" alt="logo" />

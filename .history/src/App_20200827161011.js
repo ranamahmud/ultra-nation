@@ -16,6 +16,7 @@ function App() {
 
   const [cart, setCart] = useState([]);
   const handleAddCountry = (country) => {
+    console.log('added', country);
     const newCart = [...cart, country];
     setCart(newCart)
   }
